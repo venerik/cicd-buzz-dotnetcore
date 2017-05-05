@@ -7,7 +7,8 @@ namespace BuzzApp
     {
         static void Main(string[] args)
         {
-            var phrase = Generator.Buzz();
+            var generator = new Generator();
+            var phrase = generator.Buzz();
             Console.WriteLine($"Phrase: {phrase}.");
         }
     }
