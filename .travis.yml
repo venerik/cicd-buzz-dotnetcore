@@ -3,3 +3,5 @@ solution: Buzz.sln
 mono: none
 dotnet: 1.0.1
 dist: trusty
+script:
+  - xbuild /p:Configuration=Release Buzz.sln
