@@ -82,13 +82,13 @@ namespace Buzz
 
         private string GeneratePhrase()
         {
-            var buzzTerms = Sample(_buzz, 2);
+            var buzzTerms = _buzz.Sample(2).ToList();
             return string.Join(
                 " ", 
-                Sample(_adjectives), 
+                _adjectives.Sample(), 
                 buzzTerms[0], 
-                Sample(_adverbs), 
-                Sample(_verbs), 
+                _adverbs.Sample(), 
+                _verbs.Sample(), 
                 buzzTerms[1]);
         }
     }
