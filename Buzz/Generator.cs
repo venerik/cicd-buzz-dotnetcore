@@ -58,6 +58,11 @@ namespace Buzz
                 return new List<string>();
             }
 
+            if(size >= values.Count)
+            {
+                return values;
+            }
+
             var samples = new List<string>();
             var source = new List<string>(values);
             while(samples.Count != size)
