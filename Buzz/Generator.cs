@@ -5,7 +5,7 @@ using System.Text.RegularExpressions;
 
 namespace Buzz
 {
-    public class Generator
+    public class Generator : IBuzzGenerator
     {
         private static string[] _buzz = { 
             "continuous testing", 
