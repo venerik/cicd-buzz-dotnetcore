@@ -40,46 +40,6 @@ namespace Buzz
             return phrase.ToTitleCase();
         }
 
-        public string Sample(IList<string> values)
-        {
-            if(values == null || !values.Any())
-            {
-                return string.Empty;
-            }
-
-            var index = _rnd.Next(values.Count);
-            return values[index];
-        }
-
-        public IList<string> Sample(IList<string> values, int size)
-        {
-            if (values == null || !values.Any() || size < 1)
-            {
-                return new List<string>();
-            }
-
-            if (size >= values.Count)
-            {
-                return values;
-            }
-
-            return GetSamples(values, size);
-        }
-
-        private List<string> GetSamples(IList<string> values, int size)
-        {
-            var samples = new List<string>();
-            var source = new List<string>(values);
-            while (samples.Count != size)
-            {
-                var value = Sample(source);
-                samples.Add(value);
-                source.Remove(value);
-            }
-
-            return samples;
-        }
-
         private string GeneratePhrase()
         {
             var buzzTerms = _buzz.Sample(2).ToList();
