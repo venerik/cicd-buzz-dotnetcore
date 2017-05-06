@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Buzz.Tests
@@ -93,6 +95,19 @@ namespace Buzz.Tests
             CollectionAssert.AreEqual(values, actual);
         }
 
+        [TestMethod]
+        public void Buzz_InAllCases_ReturnsTitleCasedPhrase()
+        {
+            // Arrange
+            var target = GetDefaultGenerator();
+
+            // Act
+            var actual = target.Buzz();
+
+            // Assert
+            Assert.IsTrue(Regex.IsMatch(actual, @"^(\b[A-Z0-9][\w]*\b[\s\.-]*)*$"));
+        }
+
         private static Generator GetDefaultGenerator()
         {
             return new Generator();
@@ -100,7 +115,7 @@ namespace Buzz.Tests
 
         private static List<string> GetDefaultValues()
         {
-            return new List<string> { "a", "b", "c" };
+            return new List<string> { "one", "two", "three" };
         }
     }
 }

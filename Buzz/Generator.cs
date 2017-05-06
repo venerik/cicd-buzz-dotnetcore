@@ -37,7 +37,7 @@ namespace Buzz
         public string Buzz()
         {
             string phrase = GeneratePhrase();
-            return ToTitleCase(phrase);
+            return phrase.ToTitleCase();
         }
 
         public string Sample(IList<string> values)
@@ -90,11 +90,6 @@ namespace Buzz
                 Sample(_adverbs), 
                 Sample(_verbs), 
                 buzzTerms[1]);
-        }
-
-        private static string ToTitleCase(string value)
-        {
-            return Regex.Replace(value, @"\b(\w)", m => m.Value.ToUpper());
         }
     }
 }
