@@ -53,19 +53,24 @@ namespace Buzz
 
         public IList<string> Sample(IList<string> values, int size)
         {
-            if(values == null || !values.Any() || size < 1)
+            if (values == null || !values.Any() || size < 1)
             {
                 return new List<string>();
             }
 
-            if(size >= values.Count)
+            if (size >= values.Count)
             {
                 return values;
             }
 
+            return GetSamples(values, size);
+        }
+
+        private List<string> GetSamples(IList<string> values, int size)
+        {
             var samples = new List<string>();
             var source = new List<string>(values);
-            while(samples.Count != size)
+            while (samples.Count != size)
             {
                 var value = Sample(source);
                 samples.Add(value);
