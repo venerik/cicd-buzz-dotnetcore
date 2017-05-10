@@ -10,14 +10,7 @@ namespace Buzz
 
         public static T Sample<T>(this IEnumerable<T> values)
         {
-            if(!values.Any())
-            {
-                throw new InvalidOperationException("Collection empty.");
-            }
-
-            values = new List<T>(values);
-            var index = _rnd.Next(values.Count());
-            return values.ToList()[index];
+            return Sample(values, 1).First();
         }
 
         public static IEnumerable<T> Sample<T>(this IEnumerable<T> values, int size)
@@ -45,11 +38,11 @@ namespace Buzz
             var source = new List<T>(values);
             while (samples.Count != size)
             {
-                var value = Sample(source);
+                var index = _rnd.Next(source.Count());
+                var value = source[index];
                 samples.Add(value);
                 source.Remove(value);
             }
-
             return samples;
         }
     }
